@@ -1,15 +1,36 @@
+import React, { useEffect, useState, useRef } from "react";
 import s from "./chat.module.css";
 import ChatBar from "./ChatBar";
 import ChatBody from "./ChatBody";
 import ChatFooter from "./ChatFooter";
 
 const ChatPage = ({ socket }) => {
+  const [messages, setMessages] = useState([]);
+  const [typingStatus, setTypingStatus] = useState("");
+  const lastMessageRef = useRef(null);
+
+  useEffect(() => {
+    socket.on("messageResponse", (data) => setMessages([...messages, data]));
+  }, [socket, messages]);
+
+  useEffect(() => {
+    lastMessageRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
+
+  useEffect(() => {
+    socket.on("typingResponse", (data) => setTypingStatus(data));
+  }, [socket]);
+
   return (
     <div className={s.chat}>
-      <ChatBar />
+      <ChatBar socket={socket} />
       <div className={s.main}>
-        <ChatBody />
-        <ChatFooter />
+        <ChatBody
+          messages={messages}
+          lastMessageRef={lastMessageRef}
+          typingStatus={typingStatus}
+        />
+        <ChatFooter socket={socket} />
       </div>
     </div>
   );

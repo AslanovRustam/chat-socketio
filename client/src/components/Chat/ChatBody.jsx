@@ -1,8 +1,9 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import Button from "../Button/Button";
 import s from "./chat.module.css";
 
-const ChatBody = () => {
+const ChatBody = ({ messages, lastMessageRef, typingStatus }) => {
   const navigate = useNavigate();
 
   const handleLeaveChat = () => {
@@ -14,32 +15,39 @@ const ChatBody = () => {
   return (
     <>
       <header className={s.mainHeader}>
-        <p>Hangout with Colleagues</p>
-        <button className={s.leaveChatBtn} onClick={handleLeaveChat}>
+        <p>Hangout with Friends</p>
+        <Button
+          text="LEAVE CHAT"
+          style="leaveChatBtn"
+          onClickBtn={handleLeaveChat}
+        />
+        {/* <button className={s.leaveChatBtn} onClick={handleLeaveChat}>
           LEAVE CHAT
-        </button>
+        </button> */}
       </header>
 
-      {/*This shows messages sent from you*/}
       <div className={s.messageContainer}>
-        <div className={s.messageChats}>
-          <p className={s.senderName}>You</p>
-          <div className={s.messageSender}>
-            <p>Hello there</p>
-          </div>
-        </div>
+        {messages.map((message) =>
+          message.name === localStorage.getItem("userName") ? (
+            <div className={s.messageChats} key={message.id}>
+              <p className={s.senderName}>You</p>
+              <div className={s.messageSender}>
+                <p>{message.text}</p>
+              </div>
+            </div>
+          ) : (
+            <div className={s.messageChats} key={message.id}>
+              <p>{message.name}</p>
+              <div className={s.messageRecipient}>
+                <p>{message.text}</p>
+              </div>
+            </div>
+          )
+        )}
 
-        {/*This shows messages received by you*/}
-        <div className={s.messageChats}>
-          <p>Other</p>
-          <div className={s.messageRecipient}>
-            <p>Hey, I'm good, you?</p>
-          </div>
-        </div>
-
-        {/*This is triggered when a user is typing*/}
         <div className={s.messageStatus}>
-          <p>Someone is typing...</p>
+          <p>{typingStatus}</p>
+          <div ref={lastMessageRef} />
         </div>
       </div>
     </>

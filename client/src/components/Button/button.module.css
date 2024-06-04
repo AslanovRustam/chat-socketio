@@ -1,0 +1,37 @@
+.btn,
+.leaveChatBtn,
+.sendBtn {
+  width: 10em;
+  padding: 1em;
+  font-size: 2em;
+  cursor: pointer;
+  outline: none;
+  border: 0.1em solid var(--secondaryColor);
+  border-radius: 0.5em;
+  transition: var(--transition);
+}
+.btn:hover,
+.btn:focus {
+  background-color: var(--primaryColor);
+  color: var(--secondaryColor);
+}
+
+.leaveChatBtn {
+  font-size: 1em;
+  width: fit-content;
+  background-color: var(--primaryColor);
+  color: var(--secondaryColor);
+}
+.leaveChatBtn:hover,
+.leaveChatBtn:focus {
+  color: var(--secondaryColor);
+  background-color: var(--orangeColor);
+}
+
+.sendBtn {
+  font-size: 1em;
+  width: fit-content;
+}
+.sendBtn:hover {
+  background-color: var(--greenColor);
+}
