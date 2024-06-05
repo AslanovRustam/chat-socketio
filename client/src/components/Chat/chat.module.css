@@ -1,24 +1,28 @@
 .chat {
   width: 100%;
-  height: 100vh;
+  height: 90vh;
   display: flex;
   align-items: center;
+  overflow: scroll;
   background-color: var(--primaryColor);
   border: 0.1em solid var(--secondaryColor);
 }
 .sidebar {
   height: 100%;
-  /* background-color: var(--secondaryColor); */
   flex: 0.2;
-  padding: 1.5em;
-  /* border-right: 0.1 solid var(--secondaryColor); */
+  padding: 1em;
+}
+.title {
+  font-size: 1em;
 }
 .main {
   height: 100%;
   flex: 0.8;
 }
 .header {
-  margin: 1.5em 0 1.2em 0;
+  padding: 1em 0;
+  margin-bottom: 1em;
+  border-bottom: 0.2em solid var(--secondaryColor);
 }
 .users > * {
   margin-bottom: 0.75em;
@@ -32,19 +36,21 @@
 }
 .mainHeader {
   width: 100%;
-  height: 10vh;
+  /* height: 10vh; */
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.2em;
+  padding: 1em;
   background-color: var(--secondaryColor);
+  border-bottom: 0.2em solid var(--primaryColor);
 }
-
+.headerTitle {
+  color: var(--primaryColor);
+}
 .messageContainer {
   width: 100%;
-  height: 80vh;
   background-color: var(--secondaryColor);
-  padding: 1.2em;
+  padding: 1em 0;
   overflow-y: scroll;
 }
 
@@ -52,9 +58,7 @@
   margin-bottom: 0.75em;
 }
 .footer {
-  padding: 0.75em;
-  /* background-color: #f9f5eb; */
-  height: 10em;
+  padding: 0.75em 0;
 }
 .form {
   width: 100%;
@@ -66,36 +70,34 @@
 .message {
   width: 80%;
   height: 100%;
-  border-radius: 10px;
-  /* border: 1px solid #ddd; */
+  border-radius: 0.8em;
   outline: none;
-  padding: 15px;
+  padding: 1em;
 }
 
 .messageRecipient {
-  background-color: #f5ccc2;
-  width: 300px;
-  padding: 10px;
-  border-radius: 10px;
-  font-size: 15px;
+  background-color: var(--backgroundColorSecond);
+  width: 15em;
+  padding: 0.4em;
+  border-radius: 0.4em;
 }
 .messageSender {
-  background-color: rgb(194, 243, 194);
-  max-width: 300px;
-  padding: 10px;
-  border-radius: 10px;
+  background-color: var(--backgroundColor);
+  max-width: 15em;
+  padding: 0.5em;
+  border-radius: 0.5em;
   margin-left: auto;
-  font-size: 15px;
 }
 .messageChats > p {
-  font-size: 13px;
+  font-size: 0.8em;
 }
 .senderName {
   text-align: right;
+  color: var(--primaryColor);
 }
 .messageStatus {
   position: fixed;
-  bottom: 50px;
-  font-size: 13px;
+  bottom: 3em;
+  font-size: 0.75em;
   font-style: italic;
 }

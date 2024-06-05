@@ -34,4 +34,5 @@
 }
 .sendBtn:hover {
   background-color: var(--greenColor);
+  color: var(--secondaryColor);
 }

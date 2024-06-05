@@ -19,19 +19,19 @@ const ChatFooter = ({ socket }) => {
     setMessage("");
   };
 
-  const handleTyping = () =>
+  const handleTyping = () => {
     socket.emit("typing", `${localStorage.getItem("userName")} is typing`);
+  };
 
   return (
     <div className={s.footer}>
-      <form className="form" onSubmit={handleSendMessage}>
+      <form className={s.form} onSubmit={handleSendMessage}>
         <Input
           value={message}
           setValue={setMessage}
           placeHolder="Write message"
-          onKeyDown={handleTyping}
+          onKeyDownProp={handleTyping}
         />
-
         <Button text="SEND" style="sendBtn" type="submit" />
       </form>
     </div>

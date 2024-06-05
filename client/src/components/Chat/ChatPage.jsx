@@ -21,6 +21,7 @@ const ChatPage = ({ socket }) => {
     socket.on("typingResponse", (data) => setTypingStatus(data));
   }, [socket]);
 
+  console.log(typingStatus);
   return (
     <div className={s.chat}>
       <ChatBar socket={socket} />

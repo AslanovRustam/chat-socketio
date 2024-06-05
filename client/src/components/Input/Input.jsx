@@ -5,7 +5,7 @@ function Input({ value, setValue, placeHolder, onKeyDownProp }) {
   return (
     <input
       type="text"
-      minLength={2}
+      required
       name="username"
       id="username"
       className={s.usernameInput}
